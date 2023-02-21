@@ -38,8 +38,38 @@
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
-
-
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.9.2</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.9.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.ones1kk</groupId>
+            <artifactId>assertions</artifactId>
+            <version>0.0.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.heershingenmosiken</groupId>
+            <artifactId>assertions-java</artifactId>
+            <version>1.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.heershingenmosiken</groupId>
+            <artifactId>assertions-java</artifactId>
+            <version>1.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.heershingenmosiken</groupId>
+            <artifactId>assertions-java</artifactId>
+            <version>1.3.0</version>
+        </dependency>
 
 
     </dependencies>

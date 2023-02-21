@@ -20,14 +20,13 @@ public abstract class BaseTest {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
         driver.manage().window().setSize(widowSize);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
-    public void setUpFullScreen() {
+    public void setUpMaximized() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("-start-fullscreen");
+        options.addArguments("--start-maximized");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
