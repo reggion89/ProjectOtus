@@ -42,13 +42,13 @@ public class TestSet {
         new MainPage(driver).open();
         logger.info("Браузер открыт в максимальном разрешении.");
     }
-//    @AfterEach
-//    public void close(){
-//        if(driver != null){
-//            driver.close();
-//        driver.quit();}
-//        logger.info("Браузер закрыт после успешного теста");
-//    }
+    @AfterEach
+    public void close(){
+        if(driver != null){
+            driver.close();
+        driver.quit();}
+        logger.info("Браузер закрыт после успешного теста");
+    }
 
 
 
