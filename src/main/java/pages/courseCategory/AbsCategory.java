@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.AbsPage;
 
-public class AbsCategory extends AbsPage {
+public abstract class AbsCategory extends AbsPage {
     public AbsCategory(WebDriver driver, String path) {
         super(driver, path);
     }

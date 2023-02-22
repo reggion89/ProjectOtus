@@ -25,10 +25,7 @@ import java.util.concurrent.TimeUnit;
 
 public class TestSet {
     private WebDriver driver;
-        private Logger logger = LogManager.getLogger(TestSet.class);
-    private String cookieButton = "body > div.body-wrapper > div > div.container.cookies__container > div > div > button";
-    private String cookieButtonMain = "body > div.body-wrapper > div > div.container.cookies__container > div > div > button";
-    private static final String HIDE_COOKIE = "$('body > div.body-wrapper > div > div.container.cookies__container > div > div').hide();";
+    private Logger logger = LogManager.getLogger(TestSet.class);
     @BeforeAll
     public static void start() {
         WebDriverManager.chromedriver().setup();
@@ -42,13 +39,13 @@ public class TestSet {
         new MainPage(driver).open();
         logger.info("Браузер открыт в максимальном разрешении.");
     }
-    @AfterEach
-    public void close(){
-        if(driver != null){
-            driver.close();
-        driver.quit();}
-        logger.info("Браузер закрыт после успешного теста");
-    }
+//    @AfterEach
+//    public void close(){
+//        if(driver != null){
+//            driver.close();
+//        driver.quit();}
+//        logger.info("Браузер закрыт после успешного теста");
+//    }
 
 
 
@@ -102,14 +99,6 @@ public class TestSet {
         eventsTiles.eventTypeShouldBeSameAs("День открытых дверей");
 
     }
-    @Test
-    public void test40(){
-    }
-
-
-
-
-
 }
 
 

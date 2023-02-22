@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.AbsPage;
 
-public class AbsCourse extends AbsPage {
+public abstract class AbsCourse extends AbsPage {
     public AbsCourse(WebDriver driver, String path) {
         super(driver, path);
     }

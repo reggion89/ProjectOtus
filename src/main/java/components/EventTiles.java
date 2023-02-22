@@ -20,13 +20,11 @@ public class EventTiles extends AbsBaseComponent{
     public EventTiles(WebDriver driver) {
         super(driver);
     }
-    private static final String EVENTTIMECLASS = ".dod_new-event__time";
-    private static final String EVENTTYPE = ".dod_new-event__type";
 
-    @FindBy(css = EVENTTIMECLASS)
+    @FindBy(css = ".dod_new-event__time")
     List<WebElement> eventsWebElementList;
 
-    @FindBy(css = EVENTTYPE)
+    @FindBy(css = ".dod_new-event__type")
     List<WebElement> dodList;
 
     public void eventTypeShouldBeSameAs(String eventType) {
@@ -35,42 +33,11 @@ public class EventTiles extends AbsBaseComponent{
         }
     }
 
-    public void eventsTilesShouldBeDisplayed() {
-        checkVisibilityOfElements(driver.findElement(By.cssSelector(EVENTTIMECLASS)));
+    public void eventsTilesShouldBeDisplayed() { // Этот метод можно удалить если селектор вынесен в FindBy?
+        checkVisibilityOfElements(driver.findElement(By.cssSelector(".dod_new-event__time")));
     }
 
     public void checkEventsDate() {
-
-//
-//        public static void main(String[] args) {
-//            try {
-//                // Создаём список для хранения дат мероприятий
-//                List<LocalDateTime> eventDates = new ArrayList<>();
-//
-//                // Получаем текущую дату и время
-//                LocalDateTime currentDate = LocalDateTime.now();
-//
-//                // Итерируемся по всем элементам и парсим даты в список
-//                for (Element element : datesElements) {
-//                    String dateString = element.text();
-//                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy в HH:mm");
-//                    LocalDateTime date = LocalDateTime.parse(dateString, formatter);
-//                    eventDates.add(date);
-//                }
-//
-//                // Проверяем, что все даты в списке больше или равны текущей дате
-//                for (LocalDateTime date : eventDates) {
-//                    if (date.isBefore(currentDate)) {
-//                        throw new Exception("Date is before current date");
-//                    }
-//                }
-//
-//                // Выводим даты мероприятий в консоль
-//                System.out.println(eventDates);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
         List<String> eventsList = new ArrayList<>();
         List<LocalDate> eventsDateList = new ArrayList<>();
         String monthOfEvent;
