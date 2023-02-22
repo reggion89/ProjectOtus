@@ -38,7 +38,8 @@ public abstract class AbsPageObject {
 
     }
     protected void assertByText(WebElement element, String text) {
-        Assertions.assertTrue(element.getText().contains(text));
+        Assertions.assertEquals(element.getText(), text);
+
     }
     protected void clickAndPerform(WebElement element) {
         waiter.waitForCondition(ExpectedConditions.visibilityOf(element));

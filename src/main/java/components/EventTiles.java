@@ -22,10 +22,10 @@ public class EventTiles extends AbsBaseComponent{
     }
 
     @FindBy(css = ".dod_new-event__time")
-    List<WebElement> eventsWebElementList;
+    private List<WebElement> eventsWebElementList;
 
     @FindBy(css = ".dod_new-event__type")
-    List<WebElement> dodList;
+    private List<WebElement> dodList;
 
     public void eventTypeShouldBeSameAs(String eventType) {
         for (WebElement element : dodList) {
@@ -33,38 +33,29 @@ public class EventTiles extends AbsBaseComponent{
         }
     }
 
-    public void eventsTilesShouldBeDisplayed() { // Этот метод можно удалить если селектор вынесен в FindBy?
-        checkVisibilityOfElements(driver.findElement(By.cssSelector(".dod_new-event__time")));
+    public void eventsTilesShouldBeDisplayed() {
+        eventsWebElementList.forEach(this::checkVisibilityOfElements);
     }
 
     public void checkEventsDate() {
-        List<String> eventsList = new ArrayList<>();
-        List<LocalDate> eventsDateList = new ArrayList<>();
-        String monthOfEvent;
-        String dateOfEvent;
         LocalDate currentDate = LocalDate.now();
 
 
         for (WebElement element : eventsWebElementList) {
-            eventsList.add(element.getText());
-        }
-        for (String string : eventsList) {
-            monthOfEvent = string.split(" ")[1];
-            dateOfEvent = string.split(" ")[0];
-            String date = dateOfEvent+" " +monthOfEvent +" 2023";
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMMM yyyy", new Locale("ru"));
-            DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            LocalDate localDate = LocalDate.parse(LocalDate.parse(date, formatter).format(outputFormatter));
-
-            if (localDate.equals("Сейчас в эфире")) {
-                eventsDateList.add(LocalDate.now());
+            String data = element.getText()+" "+LocalDate.now().getYear();
+            LocalDate localData = null;
+            if (data.contains("Сейчас в эфире")) {
+                localData = LocalDate.now();
             } else {
-                eventsDateList.add(localDate);
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMMM HH:mm yyyy", new Locale("ru"));
+            localData = LocalDate.parse(data, formatter);
             }
+            Assertions.assertTrue(localData.isAfter(currentDate) || localData.isEqual(currentDate));
+
         }
-        for (LocalDate localDate : eventsDateList) {
-            Assertions.assertTrue(localDate.isAfter(currentDate) || localDate.isEqual(currentDate));
+        logger.info("Мероприятий предстоит ещё "+eventsWebElementList.size());
         }
-        logger.info("Мероприятий предстоит ещё "+eventsList.size());
-    }
+
+
 }

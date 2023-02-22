@@ -1,6 +1,7 @@
 import components.EventTiles;
 import components.LessonTiles;
 import components.Menu;
+import data.Courses;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -11,7 +12,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import pages.EventPage;
 import pages.MainPage;
 import pages.courseCategory.TestPage;
-import pages.coursePage.PythonQaPage;
+import pages.coursePage.CoursePage;
 
 
 public class TestSet {
@@ -57,13 +58,13 @@ public class TestSet {
     public void checkCoursePage(){
         MainPage mainPage = new MainPage(driver);
         TestPage testingPage = new TestPage(driver);
-        PythonQaPage pythonQaPage = new PythonQaPage(driver);
+        CoursePage coursePage = new CoursePage(driver, Courses.WEBQA);
         mainPage.openCoursePage("Тестирование");
         testingPage.clickCourseLink(testingPage.getCoursePageName());
-        pythonQaPage.courseTitleShouldBeSameAs(pythonQaPage.getCourseTitleText());
-        pythonQaPage.courseDescriptionShouldBeSameAs(pythonQaPage.getCourseDescriptionText());
-        pythonQaPage.courseDurationShouldBeSameAs(pythonQaPage.getCourseDurationText());
-        pythonQaPage.courseFormatShouldBeSameAs(pythonQaPage.getCourseFormatText());
+        coursePage.courseTitleShouldBeSameAs(Courses.WEBQA);
+        coursePage.courseDescriptionShouldBeSameAs(Courses.WEBQA);
+        coursePage.courseDurationShouldBeSameAs(Courses.WEBQA);
+        coursePage.courseFormatShouldBeSameAs(Courses.WEBQA);
     }
 
     @Test
