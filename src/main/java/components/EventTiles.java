@@ -43,7 +43,6 @@ public class EventTiles extends AbsBaseComponent{
         String monthOfEvent;
         String dateOfEvent;
         LocalDate currentDate = LocalDate.now();
-        int i;
 
 
         for (WebElement element : eventsWebElementList) {
@@ -52,10 +51,10 @@ public class EventTiles extends AbsBaseComponent{
         for (String string : eventsList) {
             monthOfEvent = string.split(" ")[1];
             dateOfEvent = string.split(" ")[0];
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
             String date = dateOfEvent+" " +monthOfEvent +" 2023";
-            LocalDate localDate = LocalDate.parse(date, formatter);
-
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMMM yyyy", new Locale("ru"));
+            DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate localDate = LocalDate.parse(LocalDate.parse(date, formatter).format(outputFormatter));
 
             if (localDate.equals("Сейчас в эфире")) {
                 eventsDateList.add(LocalDate.now());
