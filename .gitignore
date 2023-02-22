@@ -2,8 +2,8 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-.log
-.log*
+*.log
+*.log*
 
 
 ### IntelliJ IDEA ###
@@ -37,3 +37,6 @@ build/
 ### Mac OS ###
 .DS_Store
 /.idea/
+/log4j12example.log
+/log4j12example.log2023-02-20
+/log4j12example.log2023-02-21
